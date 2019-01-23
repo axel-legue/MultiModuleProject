@@ -8,15 +8,23 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.MobileAds;
+import com.legue.axel.jokeprovider.JokeProvider;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
+    private JokeProvider jokeProvider;
+    private ArrayList<String> jokeList;
+    private int numberOfJokes;
+    private int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MobileAds.initialize(this,"ca-app-pub-4205057744646990~8261001730");
+        MobileAds.initialize(this, "ca-app-pub-4205057744646990~8261001730");
+        jokeProvider = new JokeProvider();
     }
 
 
@@ -43,8 +51,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
+        jokeList = jokeProvider.getJokeList();
+        numberOfJokes = jokeList.size();
+        if (i + 1 <= numberOfJokes) {
+            Toast.makeText(this, jokeList.get(i), Toast.LENGTH_LONG).show();
+        } else {
+            i = 0;
+            Toast.makeText(this, jokeList.get(i), Toast.LENGTH_LONG).show();
+        }
+        i++;
     }
-
-
 }
