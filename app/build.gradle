@@ -22,7 +22,6 @@ android {
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -32,6 +31,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
 }
 
 dependencies {
@@ -50,6 +54,7 @@ dependencies {
     })
 
     implementation project (':jokeProvider')
+    implementation project (':displayjoke')
 
     testImplementation 'junit:junit:4.12'
 }

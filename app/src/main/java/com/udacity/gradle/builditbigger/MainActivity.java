@@ -1,5 +1,6 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -11,6 +12,9 @@ import com.google.android.gms.ads.MobileAds;
 import com.legue.axel.jokeprovider.JokeProvider;
 
 import java.util.ArrayList;
+
+import hmi.swl.renault.displayjoke.DisplayJokeActivity;
+import hmi.swl.renault.displayjoke.DisplayJokeConstants;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -51,14 +55,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
+        Intent intent = new Intent(this, DisplayJokeActivity.class);
         jokeList = jokeProvider.getJokeList();
         numberOfJokes = jokeList.size();
-        if (i + 1 <= numberOfJokes) {
-            Toast.makeText(this, jokeList.get(i), Toast.LENGTH_LONG).show();
-        } else {
+        if (i + 1 > numberOfJokes) {
             i = 0;
-            Toast.makeText(this, jokeList.get(i), Toast.LENGTH_LONG).show();
         }
+        intent.putExtra(DisplayJokeConstants.JOKE_EXTRA, jokeList.get(i));
+        startActivity(intent);
         i++;
     }
 }

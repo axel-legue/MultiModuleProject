@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="hmi.swl.renault.displayjoke">
+
+    <application>
+        <activity android:name=".DisplayJokeActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="hmi.swl.renault.displayjoke.DISPLAY_JOKE" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
