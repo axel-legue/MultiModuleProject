@@ -7,14 +7,13 @@
     tools:context=".DisplayJokeActivity">
 
     <TextView
-        android:id="@+id/tv_joke"
+        android:id="@+id/tv_joke_displayed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#1b899f"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#3862ca"
+        android:textSize="22sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

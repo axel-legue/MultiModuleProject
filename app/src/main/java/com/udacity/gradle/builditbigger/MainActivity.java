@@ -6,19 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.MobileAds;
-import com.legue.axel.jokeprovider.JokeProvider;
+import com.legue.axel.displayjoke.DisplayJokeActivity;
+import com.legue.axel.displayjoke.DisplayJokeConstants;
+
 
 import java.util.ArrayList;
 
-import hmi.swl.renault.displayjoke.DisplayJokeActivity;
-import hmi.swl.renault.displayjoke.DisplayJokeConstants;
-
-
 public class MainActivity extends AppCompatActivity {
-    private JokeProvider jokeProvider;
     private ArrayList<String> jokeList;
     private int numberOfJokes;
     private int i = 0;
@@ -28,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         MobileAds.initialize(this, "ca-app-pub-4205057744646990~8261001730");
-        jokeProvider = new JokeProvider();
+        new EndPointsAsyncTask().execute(this);
+
     }
 
 
@@ -56,12 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void tellJoke(View view) {
         Intent intent = new Intent(this, DisplayJokeActivity.class);
-        jokeList = jokeProvider.getJokeList();
-        numberOfJokes = jokeList.size();
-        if (i + 1 > numberOfJokes) {
-            i = 0;
-        }
-        intent.putExtra(DisplayJokeConstants.JOKE_EXTRA, jokeList.get(i));
+//        intent.putExtra(DisplayJokeConstants.JOKE_EXTRA, jokeList.get(i));
         startActivity(intent);
         i++;
     }
