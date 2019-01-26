@@ -11,23 +11,15 @@ import com.google.android.gms.ads.MobileAds;
 import com.legue.axel.displayjoke.DisplayJokeActivity;
 import com.legue.axel.displayjoke.DisplayJokeConstants;
 
-
-import java.util.ArrayList;
-
-public class MainActivity extends AppCompatActivity {
-    private ArrayList<String> jokeList;
-    private int numberOfJokes;
-    private int i = 0;
+public class MainActivity extends AppCompatActivity implements EndPointsAsyncTask.EndPointCallback {
+    private EndPointsAsyncTask endPointsAsyncTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         MobileAds.initialize(this, "ca-app-pub-4205057744646990~8261001730");
-        new EndPointsAsyncTask().execute(this);
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -52,9 +44,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
+        endPointsAsyncTask = new EndPointsAsyncTask(this);
+        endPointsAsyncTask.execute();
+    }
+
+    @Override
+    public void processFinish(String output) {
         Intent intent = new Intent(this, DisplayJokeActivity.class);
-//        intent.putExtra(DisplayJokeConstants.JOKE_EXTRA, jokeList.get(i));
+        intent.putExtra(DisplayJokeConstants.JOKE_EXTRA, output);
         startActivity(intent);
-        i++;
     }
 }

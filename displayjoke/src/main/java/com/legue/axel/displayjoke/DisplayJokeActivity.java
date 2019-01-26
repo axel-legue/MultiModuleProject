@@ -9,7 +9,6 @@ import android.widget.TextView;
 public class DisplayJokeActivity extends AppCompatActivity {
 
     private String jokeToDisplay;
-
     private TextView mJokeTextView;
 
 
@@ -35,7 +34,7 @@ public class DisplayJokeActivity extends AppCompatActivity {
         if (jokeToDisplay != null && !TextUtils.isEmpty(jokeToDisplay)) {
             mJokeTextView.setText(jokeToDisplay);
         } else {
-            mJokeTextView.setText("No Joke provide to the Intent");
+            mJokeTextView.setText("No Joke provided to the Intent");
         }
     }
 }

@@ -37,7 +37,6 @@ dependencies {
 // with the appengine closure
 appengine {  // App Engine tasks configuration
     deploy {   // deploy configuration
-
         // The following is used for acceptance tests and
         // is not required for a migration.
         project = findProperty("appengine.deploy.project")

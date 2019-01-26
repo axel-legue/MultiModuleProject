@@ -15,7 +15,15 @@ import java.io.IOException;
 public class EndPointsAsyncTask extends AsyncTask<Context, Void, String> {
 
     private static MyApi myApiService = null;
-    private Context context;
+    private EndPointCallback mCallback;
+
+    public interface EndPointCallback {
+        void processFinish(String output);
+    }
+
+    public EndPointsAsyncTask(EndPointCallback callback) {
+        mCallback = callback;
+    }
 
     @Override
     protected String doInBackground(Context... params) {
@@ -34,8 +42,6 @@ public class EndPointsAsyncTask extends AsyncTask<Context, Void, String> {
             // end options for devappserver
             myApiService = builder.build();
         }
-        context = params[0];
-
         try {
 
             return myApiService.getJoke().execute().getData();
@@ -46,6 +52,6 @@ public class EndPointsAsyncTask extends AsyncTask<Context, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+        mCallback.processFinish(result);
     }
 }
