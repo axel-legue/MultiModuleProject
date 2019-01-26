@@ -5,4 +5,5 @@
     <string name="action_settings">Settings</string>
     <string name="banner_ad_unit_id_test">ca-app-pub-3940256099942544/6300978111</string>
     <string name="banner_ad_unit_id_production">ca-app-pub-4205057744646990/2350786236</string>
+    <string name="interstitial_ad_unit_id_production">ca-app-pub-4205057744646990/1392728094</string>
 </resources>
