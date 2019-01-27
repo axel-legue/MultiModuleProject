@@ -27,10 +27,10 @@ public class MainActivity extends AppCompatActivity implements EndPointsAsyncTas
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MobileAds.initialize(this, "ca-app-pub-4205057744646990~8261001730");
+        MobileAds.initialize(this, BuildConfig.ADMOB_API_APPLICATION_CODE);
 
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId(BuildConfig.ADMOB_INTERSTITIAL_API_KEY_TEST);
         mInterstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdClosed() {

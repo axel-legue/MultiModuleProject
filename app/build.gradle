@@ -20,6 +20,14 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    buildTypes.each {
+        it.buildConfigField "String", "ADMOB_API_APPLICATION_CODE" , AdMobApplicationCode
+        it.buildConfigField "String", "ADMOB_BANNER_API_KEY_TEST" , AdMobBannerApiKeyTest
+        it.buildConfigField "String", "ADMOB_BANNER_API_KEY_PROD" , AdMobBannerApiKeyProduction
+        it.buildConfigField "String", "ADMOB_INTERSTITIAL_API_KEY_TEST" , AdMobinterstitalApiKeyTest
+        it.buildConfigField "String", "ADMOB_INTERSTITIAL_API_KEY_PROD" , AdMobinterstitalApiKeyProduction
+    }
+
     buildTypes {
         release {
             minifyEnabled false
