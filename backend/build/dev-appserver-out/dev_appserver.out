@@ -1,0 +1,23 @@
+Warning: Google App Engine Java 7 runtime is deprecated.
+Warning: See https://cloud.google.com/appengine/docs/deprecations/java7
+janv. 27, 2019 3:29:01 PM java.util.prefs.WindowsPreferences <init>
+AVERTISSEMENT: Could not open/create prefs root node Software\JavaSoft\Prefs at root 0x80000002. Windows RegCreateKeyEx(...) returned error code 5.
+janv. 27, 2019 3:29:01 PM com.google.appengine.tools.development.SystemPropertiesManager setSystemProperties
+INFOS: Overwriting system property key 'java.util.logging.config.file', value 'C:\Users\Famille\AppData\Local\Google\Cloud SDK\google-cloud-sdk\platform\google_appengine\google\appengine\tools\java\config\sdk\logging.properties' with value 'WEB-INF/logging.properties' from 'C:\Users\Famille\AndroidStudioProjects\FinalProject\backend\build\exploded-backend\WEB-INF\appengine-web.xml'
+janv. 27, 2019 3:29:01 PM com.google.apphosting.utils.jetty.JettyLogger info
+INFOS: Logging to JettyLogger(null) via com.google.apphosting.utils.jetty.JettyLogger
+janv. 27, 2019 2:29:01 PM com.google.appengine.tools.development.IsolatedAppClassLoader checkWorkingDirectory
+AVERTISSEMENT: Your working directory, (C:\Users\Famille\AndroidStudioProjects\FinalProject\backend) is not equal to your 
+web application root (C:\Users\Famille\AndroidStudioProjects\FinalProject\backend\build\exploded-backend)
+You will not be able to access files from your working directory on the production server.
+
+janv. 27, 2019 2:29:01 PM com.google.apphosting.utils.jetty.JettyLogger info
+INFOS: jetty-6.1.x
+janv. 27, 2019 2:29:02 PM com.google.apphosting.utils.jetty.JettyLogger info
+INFOS: Started SelectChannelConnector@localhost:8080
+janv. 27, 2019 2:29:02 PM com.google.appengine.tools.development.AbstractModule startup
+INFOS: Module instance default is running at http://localhost:8080/
+janv. 27, 2019 2:29:02 PM com.google.appengine.tools.development.AbstractModule startup
+INFOS: The admin console is running at http://localhost:8080/_ah/admin
+janv. 27, 2019 3:29:02 PM com.google.appengine.tools.development.DevAppServerImpl doStart
+INFOS: Dev App Server is now running

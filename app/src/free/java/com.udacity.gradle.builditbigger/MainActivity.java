@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -18,6 +20,8 @@ public class MainActivity extends AppCompatActivity implements EndPointsAsyncTas
     private EndPointsAsyncTask endPointsAsyncTask;
     private Button mTellJokeBtn;
     private InterstitialAd mInterstitialAd;
+    private ProgressBar mLoadingJoke;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements EndPointsAsyncTas
 
         mTellJokeBtn = findViewById(R.id.tv_display_joke);
         mTellJokeBtn.setOnClickListener(view -> tellJoke());
+        mLoadingJoke = findViewById(R.id.pb_loading_joke);
+        mLoadingJoke.setVisibility(View.GONE);
     }
 
     private void tellJoke() {
@@ -58,13 +64,14 @@ public class MainActivity extends AppCompatActivity implements EndPointsAsyncTas
         if (!mInterstitialAd.isLoading() && !mInterstitialAd.isLoaded()) {
             mInterstitialAd.loadAd(new AdRequest.Builder().build());
         }
-
+        mLoadingJoke.setVisibility(View.VISIBLE);
         endPointsAsyncTask = new EndPointsAsyncTask(this);
         endPointsAsyncTask.execute();
     }
 
     @Override
     public void processFinish(String output) {
+        mLoadingJoke.setVisibility(View.GONE);
         Intent intent = new Intent(this, DisplayJokeActivity.class);
         intent.putExtra(DisplayJokeConstants.JOKE_EXTRA, output);
         startActivity(intent);
